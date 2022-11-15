@@ -43,7 +43,7 @@ const getFullCommentData = async (octokit, values, data, verbose = false) => {
           user: comment.user.login,
           created_at: comment.created_at,
           updated_at: comment.updated_at,
-          body: comment.body.trim() || "N/A",
+          body: comment.body && comment.body.trim() || "N/A",
         },
       });
     });
@@ -103,7 +103,7 @@ const defaultExportColumns = (data) => {
       created_at: issueObject.created_at,
       updated_at: issueObject.updated_at,
       closed_at: issueObject.closed_at !== null ? issueObject.closed_at : "",
-      body: issueObject.body.trim()  || "N/A",
+      body: issueObject.body && issueObject.body.trim()  || "N/A",
     };
     if (issueObject.user) {
       ret.user = issueObject.user.login;
