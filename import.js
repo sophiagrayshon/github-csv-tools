@@ -31,7 +31,7 @@ const importFile = (octokit, file, values) => {
           console.error("Title required by GitHub, but not found in CSV.");
           process.exit(1);
         }
-        const createPromises = csvRows.map((row) => {
+        const createPromises = csvRows.reverse().map((row) => {
           const sendObj = {
             issue : {}
           };
